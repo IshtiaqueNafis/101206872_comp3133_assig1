@@ -1,7 +1,6 @@
 {
   "name": "101206872_comp3133_assig1",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node server",
@@ -11,10 +10,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "mongoose": "^6.1.8",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IshtiaqueNafis/101206872_comp3133_assig1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IshtiaqueNafis/101206872_comp3133_assig1/issues"
+  },
+  "homepage": "https://github.com/IshtiaqueNafis/101206872_comp3133_assig1#readme",
+  "description": "",
+  "devDependencies": {
+    "jsonwebtoken": "^8.5.1"
   }
 }
