@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
+const {graphqlHTTP} = require('express-graphql')
 
 //Route files
 const airBNB = require('./routes/AirBnBRoutes');
@@ -11,10 +12,9 @@ connectDB()
 
 const app = express();
 
-const logger = (req, res, next) => {
-    console.log(`Middle ware ran`);
-    next();
-}
+app.use('/graphql',graphqlHTTP({
+    
+}));
 
 // dev using middle ware
 if(process.env.NODE_ENV === 'development'){
