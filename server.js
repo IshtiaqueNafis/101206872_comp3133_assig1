@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const cors = require('cors');
 const {ApolloServer, gql} = require('apollo-server-express');
 const typeDefs = require('./graphql/schemas/rootDef');
 const resolvers = require('./graphql/resolvers/rootResolvers');
@@ -10,8 +11,7 @@ const connectDB = require('./config/db');
 
 dotenv.config({path: './config/config.env'});
 
-const app = express();
-app.use(express.json());
+
 async function startServer() {
 
     const apolloServer = new ApolloServer({
@@ -19,7 +19,9 @@ async function startServer() {
         resolvers
 
     })
-
+    const app = express();
+    app.use(express.json());
+    app.use(cors());
     await apolloServer.start();
     apolloServer.applyMiddleware({app})
 

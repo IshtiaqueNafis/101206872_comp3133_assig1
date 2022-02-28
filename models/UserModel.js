@@ -40,24 +40,7 @@ const userSchema = new mongoose.Schema({
 
 });
 
-//region ***Hashing Password Before saving***
-userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) {
-        next();
-    }
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-})
-//endregion
 
-//region ***instance method Json WEb Token***
-userSchema.methods.getSignedJWTToken = function () {
-    return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRE
-
-    });
-}
-//endregion
 
 
 module.exports = mongoose.model('User', userSchema);

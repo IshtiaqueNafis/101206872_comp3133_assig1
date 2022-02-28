@@ -13,6 +13,9 @@ const userDef = gql`
         email:String!
         type:String!
     }
+    type Token{
+        token:String!
+    }
 
     input SignupInput{
         username:String!,
@@ -23,8 +26,15 @@ const userDef = gql`
         type:String!
     }
 
-    extend   type Mutation{
+
+    input SignInInput{
+        email:String!
+        password:String!
+    }
+
+    extend type Mutation{
         signup(input:SignupInput):User
+        signin(input:SignInInput):Token
 
     }
 
