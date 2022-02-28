@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+
 const userSchema = new mongoose.Schema({
+
+
 
     username: {
         type: String,
@@ -27,7 +30,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, `Please add a email`],
         unique: true,
-        match: `/^(([^<>()[\\]\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\\]\\.,;:\\s@\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\"]{2,})$/i;`
+        match: [/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,20}$/]
     },
     type: {
         type: String,

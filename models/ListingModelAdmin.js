@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const listingSchema = new mongoose.Schema({
+
+
+
     listing_title: {
         type: String,
         required: true,
