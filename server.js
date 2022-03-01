@@ -7,6 +7,8 @@ const typeDefs = require('./graphql/schemas/rootDef');
 const resolvers = require('./graphql/resolvers/rootResolvers');
 
 const connectDB = require('./config/db');
+const {verify} = require("jsonwebtoken");
+const {verifyUser} = require("./helper/header");
 
 
 dotenv.config({path: './config/config.env'});
@@ -16,7 +18,10 @@ async function startServer() {
 
     const apolloServer = new ApolloServer({
         typeDefs,
-        resolvers
+        resolvers,
+        context:({req})=>{
+            verifyUser(req)
+    }
 
     })
     const app = express();
