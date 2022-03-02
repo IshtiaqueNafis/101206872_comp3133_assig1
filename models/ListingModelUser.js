@@ -1,23 +1,36 @@
 const mongoose = require('mongoose');
 
 const listUserSchema = new mongoose.Schema({
+
+    listing_id: {
+        type:String,
+        required:true,
+        unique:true,
+    },
+    booking_id:{
+        type:String,
+        required:true,
+        unique:true,
+    },
+
     booking_date: {
-        type: Date,
+        type: String,
         required: true
     },
     booking_start: {
-        type: Date,
+        type: String,
         required: true
     },
     booking_end: {
-        type: Date,
+        type: String,
         required: true
     },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
         required: true,
-    }
+    },
+
 
 
 })

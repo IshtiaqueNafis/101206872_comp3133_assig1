@@ -8,6 +8,11 @@ const listingSchema = new mongoose.Schema({
         required: true,
 
     },
+    listing_id:{
+        type: String,
+        required: true,
+        unique:true,
+    },
     description: {
         type: String,
         required: true,
@@ -26,6 +31,10 @@ const listingSchema = new mongoose.Schema({
         type: String,
         required: true,
         match: [/^[A-Z]\d[A-Z][ -]?\d[A-Z]\d$/]
+    },
+    price:{
+        type:Number,
+        required: true,
     },
 
     user: {

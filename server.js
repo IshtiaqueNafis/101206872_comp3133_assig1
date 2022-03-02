@@ -9,6 +9,7 @@ const resolvers = require('./graphql/resolvers/rootResolvers');
 const connectDB = require('./config/db');
 const {verify} = require("jsonwebtoken");
 const {verifyUser} = require("./helper/header");
+const jwt = require("jsonwebtoken");
 
 
 dotenv.config({path: './config/config.env'});
@@ -19,8 +20,14 @@ async function startServer() {
     const apolloServer = new ApolloServer({
         typeDefs,
         resolvers,
-        context:({req})=>{
-            verifyUser(req)
+        context: async ({req})=>{
+            const token = req.headers['x-token'];
+            if(token){
+                const test = jwt.verify(token, 'fjafjkafjpiqwwqor-]i12kj2j');
+                return {id: test.id}
+            }else {
+                console.log(`to notken`);
+            }
     }
 
     })
